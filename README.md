@@ -1,1 +1,1 @@
-# intel_unnati_project-Whitecaps
+# Intel_Unnati_Project-Whitecaps
