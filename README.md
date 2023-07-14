@@ -1,4 +1,4 @@
-# Intel_Unnati_Project-Whitecaps
+<h1 align="center"> Intel_Unnati_Project-Whitecaps
 
 ## DESCRIPTION
 This project on fake news detection using machine learning and python  proposes a system for fake news detection that uses machine learning techniques 
@@ -10,38 +10,36 @@ power of machine language and python and  thus prevent the disemmination of fake
 
  ### TIMELINE OF THE PROJECT
  
- 24 May  2023 - First Interaction with mentor 
+ ***24 May  2023*** - First Interaction with mentor 
  
- 30 May  2023 - Submitted project work plan
+ ***30 May  2023*** - Submitted project work plan
  
- 1 June  2023 - Basic interaction inteldevcloud and OneApi
+ ***1 June  2023*** - Basic interaction inteldevcloud and OneApi
  
- 2 June  2023 - Hands on session on inteldevcloud and OneApi
+***2 June  2023*** - Hands on session on inteldevcloud and OneApi
  
- 7 June  2023 - Interaction with mentor for doubt clearance
+ ***7 June  2023*** - Interaction with mentor for doubt clearance
  
- 8 June  2023 - Started coding part
+ ***8 June  2023*** - Started coding part
  
- 14 June 2023 - Second live training session by intel
+ ***14 June 2023*** - Second live training session by intel
  
- 17 June 2023 - Interaction meeting with industry mentor
+ ***17 June 2023*** - Interaction meeting with industry mentor
  
- 19 June 2023 - Started report making
+ ***19 June 2023*** - Started report making
  
- 24 June 2023 - Interction meeting with industry mentor
+ ***24 June 2023*** - Interction meeting with industry mentor
  
- 29 June 2023 -  Made docker
+ ***1  July 2023*** - Interaction meeting with industry mentor
  
- 1  July 2023 - Interaction meeting with industry mentor
+ ***7  July 2023*** - Interaction meeting with industry  mentor 
  
- 7  July 2023 - Interaction meeting with industry  mentor 
+ ***10 July 2023*** - Made a video demo
  
- 10 July 2023 - Made a video demo
- 
- 14 July 2023 - Final project submssion
+ ***14 July 2023*** - Final project submssion
 
  ### MAJOR  CODE SECTIONS
-  User defined function for data visulatisation
+  **User defined function for data visulatisation**
 ```
  def visualize(dataFile,feature):          
        plt.figure(figsize = (6,4))
@@ -50,7 +48,7 @@ power of machine language and python and  thus prevent the disemmination of fake
        chart.set_xticklabels(chart.get_xticklabels(),rotation=90)
        plt.show()
 ```
-Data cleaning and pre-processing
+**Data cleaning and pre-processing**
 ```
 def Check_forNAN(data):                                                       
     print("Wait...Checking for NANs in the Dataset is progressing...")
@@ -77,7 +75,7 @@ def Check_forNAN(data):
     def rejoin_words(tokenized_column):
         return ( " ".join(tokenized_column))
 ```
-Preprocess function
+**Preprocess function**
 ```
  ## Creating Data cleaning and pre-processing function
 def PreProcess(data):
@@ -87,7 +85,7 @@ def PreProcess(data):
     data['rejoined'] = data.apply(lambda x: rejoin_words(x['stemmed']), axis=1)
 
 ```
- Splitting the data frame into data and label
+ **Splitting the data frame into data and label**
 ```
                                                       
 data.label = data.label.astype(str)                              
@@ -103,7 +101,7 @@ tfidf.fit(freq_term_matrix)
 tf_idf_matrix = tfidf.fit_transform(freq_term_matrix)
 print(tf_idf_matrix)
 ```
-Visulisation of bag of words and word count
+**Visulisation of bag of words and word count**
 ```
 fake_data = data[data["label"] == "1"]
 all_words = ' '.join([text for text in fake_data.rejoined])
@@ -128,13 +126,13 @@ def counter(text, column_text, quantity):
     plt.show()
     counter(data[data['label'] == '1'], 'rejoined', 20)
 ```
- Dataset preperation
+ **Dataset preperation**
 ```
 x_train, x_test, y_train, y_test = train_test_split(tf_idf_matrix,y, random_state=21)     
 
 ```
 
-Model training and evaluation
+**Model training and evaluation**
 ```
 Model training and evaluation
 #logistic regrssion
@@ -176,7 +174,7 @@ train_patched = timer() - start
 y_pred = rf.predict(x_test)
 mse_opt = metrics.mean_squared_error(y_test, y_pred)
 rf = RandomForestRegressor(**params).fit(x_train, y_train)
-\end{python}
+
 ```
  
  
