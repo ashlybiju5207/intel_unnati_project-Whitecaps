@@ -30,10 +30,14 @@ power of machine language and python and  thus prevent the disemmination of fake
  
  ***24 June 2023*** - Interction meeting with industry mentor
  
+ ***26 June 2023*** - Testing and debugging code
+ 
  ***1  July 2023*** - Interaction meeting with industry mentor
  
  ***7  July 2023*** - Interaction meeting with industry  mentor 
  
+ ***8  July 2023*** - Finalizing report
+  
  ***10 July 2023*** - Made a video demo
  
  ***14 July 2023*** - Final project submssion
@@ -77,6 +81,18 @@ def Check_forNAN(data):
 ```
 **Preprocess function**
 ```
+def tokenize(column):
+    tokens = nltk.word_tokenize(column)
+    return [w for w in tokens if w.isalpha()]
+def remove_stopwords(tokenized_column):
+    stops = set(stopwords.words("english"))
+    return [word for word in tokenized_column if not word in stops]
+def apply_stemming(tokenized_column):
+    stemmer = PorterStemmer()
+    return [stemmer.stem(word) for word in tokenized_column]
+def rejoin_words(tokenized_column):
+    return ( " ".join(tokenized_column))
+
  ## Creating Data cleaning and pre-processing function
 def PreProcess(data):
     data['tokenized'] = data.apply(lambda x: tokenize(x['text']), axis=1)
@@ -169,11 +185,14 @@ accuracy_values.append((score*100))
 print(f'Accuracy: {round(score*100,2)}%')
 
 #Random Forest regression
-rf = RandomForestRegressor(**params).fit(x_train, y_train)
-train_patched = timer() - start
-y_pred = rf.predict(x_test)
-mse_opt = metrics.mean_squared_error(y_test, y_pred)
-rf = RandomForestRegressor(**params).fit(x_train, y_train)
+from sklearn.metrics import accuracy_score
+time_start = time.time()
+rfr=RandomForestRegressor()
+rfr.fit(x_train,y_train)
+y_pred=rfr.predict(x_test)
+y_pred = y_pred.astype('<U1')
+Accuracy = rfr.score(x_test, y_test)
+print(Accuracy*100)
 
 ```
  
